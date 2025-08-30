@@ -10,7 +10,7 @@ class LocalChatApp {
     this.isConnected = true;
     
     this.initializeEventListeners();
-    this.displayWelcomeMessage();
+    // Removed displayWelcomeMessage();
     this.loadStoredMessages();
   }
 
@@ -77,8 +77,6 @@ class LocalChatApp {
     this.sendBtn.disabled = true;
   }
 
-
-
   loadStoredMessages() {
     // Display last 20 messages from localStorage
     const recentMessages = this.messages.slice(-20);
@@ -87,10 +85,7 @@ class LocalChatApp {
     });
   }
 
-  displayWelcomeMessage() {
-    this.updateConnectionStatus(`Welcome to Raisoni Gang Chat Room! You are ${this.username} 🎉`);
-    this.updateUserCount(1);
-  }
+  // Removed displayWelcomeMessage()
 
   addMessage(username, text, isMyMessage = false, timestamp = null) {
     const messageDiv = document.createElement('div');
@@ -110,11 +105,9 @@ class LocalChatApp {
     this.scrollToBottom();
   }
 
+  // Optionally remove or keep these if not used elsewhere
   updateConnectionStatus(message) {
-    const welcomeMessage = this.messagesContainer.querySelector('.welcome-message');
-    if (welcomeMessage) {
-      welcomeMessage.textContent = message;
-    }
+    // Removed all welcome/system messages
   }
 
   updateUserCount(count) {
@@ -135,8 +128,9 @@ class LocalChatApp {
   clearChat() {
     this.messages = [];
     this.saveMessages();
-    this.messagesContainer.innerHTML = '<div class="welcome-message">Chat cleared! 🗑️</div>';
-    this.displayWelcomeMessage();
+    this.messagesContainer.innerHTML = '';
+    // Removed system "Chat cleared!" message
+    // Removed displayWelcomeMessage();
   }
 }
 
